@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>index</title>
+		<meta name="description" content="bla" />
+		<meta name="author" content="einspunktnull" />
+		<link rel="stylesheet" type="text/css" media="screen" href="css/style.css">
+		<style type="text/css">
+			body, html {
+				margin: 0;
+				width: 100%;
+				height: 100%;
+			}
+
+			div#container {
+				width: 500px;
+				height: 400px;
+			}
+
+		</style>
+		<script type="text/javascript" src="js/jquery-1.7.1.js"></script>
+		<script type="text/javascript" src="js/highcharts-2.2.0.js"></script>
+		<script type="text/javascript" >
+			var csvFile = 'data/hichartData.csv';
+			var csvData;
+			var hichart;
+			var chartConfig = {
+				chart : {
+					renderTo : 'container',
+					type : 'bar',
+					animation : false
+				},
+				plotOptions : {
+					series : {
+						animation : false
+					}
+				},
+				title : {
+					text : 'Skills'
+				},
+				xAxis : {
+					categories : []
+				},
+				yAxis : {
+					title : {
+						text : 'Level'
+					}
+				},
+				series : []
+			};
+
+			$(document).ready(function() {
+				$.get(csvFile, onCsvLoaded);
+
+			});
+			function onCsvLoaded(data) {
+				csvData = data;
+				csv2obj();
+				console.log(chartConfig);
+				hichart = new Highcharts.Chart(chartConfig);
+			}
+
+			function csv2obj() {
+				var regexpLinebreakUnixOrWindows = /[\r?\n]+/g;
+				var lines = csvData.split(regexpLinebreakUnixOrWindows);
+
+				$.each(lines, function(indexLine, line) {
+					var items = line.split(',');
+
+					//Get Categories
+					if(indexLine == 0) {
+						$.each(items, function(indexItem, item) {
+							if(indexItem > 0) {
+								chartConfig.xAxis.categories.push(item);
+							}
+						});
+					}
+					//get other Crap
+					else {
+						var series = {
+							data : []
+						};
+						$.each(items, function(indexItem, item) {
+							if(indexItem == 0) {
+								series.name = item;
+							} else {
+								series.data.push(parseFloat(item));
+							}
+						});
+
+						chartConfig.series.push(series);
+					}
+				});
+			}
+		</script>
+	</head>
+	<body>
+		<div id="container"></div>
+	</body>
+</html>

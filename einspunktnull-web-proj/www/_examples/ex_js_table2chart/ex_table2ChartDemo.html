@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>index</title>
+		<meta name="description" content="bla" />
+		<meta name="author" content="einspunktnull" />
+		<link rel="stylesheet" type="text/css" media="screen" href="css/style.css">
+		<script type="text/javascript" src="js/libs/jquery-1.7.1.js"></script>
+		<script type="text/javascript" src="js/libs/modernizr.js"></script>
+		<script type="text/javascript" src="js/libs/highcharts-2.2.0/highcharts-2.2.0.js"></script>
+		<script type="text/javascript" src="js/einspunktnull/BasicSetup.js"></script>
+		<script type="text/javascript" src="js/einspunktnull/jq/jquery.table2highchart.js"></script>
+		<script type="text/javascript" >
+			;( function($, window, document)
+			{
+
+				function Table2ChartDemo()
+				{
+					
+					var baseConf = new Object();
+					baseConf.debug = true;
+					baseConf.useAlert = true;
+					var basicSetup = new BasicSetup(baseConf);
+
+					$(function()
+					{
+						$('.highchart-table').table2highchart();
+					});
+
+				}
+
+
+				window.Table2ChartDemo = Table2ChartDemo;
+			}(jQuery, window, document));
+
+			var t2cd = new Table2ChartDemo();
+
+		</script>
+	</head>
+	<body>
+		<!--
+		title: title of chart
+		type: bar, pie
+		height: dynamic, fixed
+		-->
+		<table class="highchart-table" data-type="bar" data-title="Text Bla" data-height="dynamic">
+			<tbody>
+				<tr>
+					<td></td>
+					<td>angstvoll</td>
+					<td>zuversichtlich</td>
+				</tr>
+				<tr>
+					<td>Gesamtbevölkerung</td>
+					<td>11</td>
+					<td>45</td>
+				</tr>
+				<tr>
+					<td>unter 35 Jahre</td>
+					<td>7</td>
+					<td>49</td>
+				</tr>
+				<tr>
+					<td>35 - 54 Jahre</td>
+					<td>11</td>
+					<td>48</td>
+				</tr>
+				<tr>
+					<td>55 Jahre und mehr</td>
+					<td>15</td>
+					<td>38</td>
+				</tr>
+			</tbody>
+		</table>
+		<br/>
+		<br/>
+		<br/>
+		<table >
+			<tbody>
+				<tr>
+					<td></td>
+					<td>angstvoll</td>
+					<td>zuversichtlich</td>
+				</tr>
+				<tr>
+					<td>Gesamtbevölkerung</td>
+					<td>11</td>
+					<td>45</td>
+				</tr>
+				<tr>
+					<td>unter 35 Jahre</td>
+					<td>7</td>
+					<td>49</td>
+				</tr>
+				<tr>
+					<td>35 - 54 Jahre</td>
+					<td>11</td>
+					<td>48</td>
+				</tr>
+				<tr>
+					<td>55 Jahre und mehr</td>
+					<td>15</td>
+					<td>38</td>
+				</tr>
+			</tbody>
+		</table>
+	</body>
+</html>

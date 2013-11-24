@@ -1,0 +1,23 @@
+ErrorDocument 403 /error403.html
+ErrorDocument 404 /error404.html
+ErrorDocument 500 /error500.html
+
+<IfModule mod_rewrite.c>
+	Options +FollowSymLinks
+	RewriteEngine On
+	RewriteBase /kunden/pingpool-online-production/schmidtentsorgung/201301_roentgenfilme-entsorgen.de/roentgenfilme-entsorgen.de/www
+	
+	
+		
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteCond %{REQUEST_FILENAME} !-d
+	RewriteCond %{REQUEST_FILENAME} !-l
+	
+	#RewriteRule ^([^/]*)/?([^/]*)/?([^\.]*)$ index.php?param1=$1&param2=$2&param3=$3 [L]
+	
+	RewriteRule ^/?([^\.]*)/?$ index.php?param1=$1 [L]
+	
+	
+	
+	
+</IfModule>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>index</title>
+		<meta name="description" content="bla" />
+		<meta name="author" content="einspunktnull" />
+		<link rel="stylesheet" type="text/css" media="screen" href="css/style.css">
+		<script type="text/javascript" src="js/libs/jquery-1.7.1.js"></script>
+		<script type="text/javascript" src="js/libs/paper-0.22.js"></script>
+		<script type="text/javascript" src="js/einspunktnull/Einspunktnull.js"></script>
+		<script type="text/javascript" src="js/einspunktnull/paper/PaperCable.js"></script>
+		<script type="text/javascript" >
+			µ.config.debug = true;
+			µ.config.useExtendedObject = true;
+			µ.config.useAlert = true;
+			µ.config.scope = window;
+			µ.update();
+
+			$(document).ready(function()
+			{
+				var canvas = $('#cableCanvas').get(0);
+				var pcd = new PaperCable(canvas, paper);
+			});
+		</script>
+	</head>
+	<body>
+		<canvas width="640" height="480" id="cableCanvas"></canvas>
+	</body>
+</html>

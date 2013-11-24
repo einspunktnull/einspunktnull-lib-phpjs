@@ -1,0 +1,28 @@
+ EFN.urlEncodeProperties = function(src)
+    {
+        var urlEncodedObj = rUrlEnc(src);
+        return $.param(urlEncodedObj);
+
+        function rUrlEnc(obj)
+        {
+            if (null == obj || "object" != typeof obj)
+            {
+                return obj;
+            }
+            if (obj instanceof Object)
+            {
+                var copy = {};
+                for ( var attr in obj)
+                {
+                    if (obj.hasOwnProperty(attr))
+                    {
+
+                        var val = encodeURIComponent(obj[attr]);
+                        copy[attr] = rUrlEnc(val);
+                    }
+                }
+                return copy;
+            }
+        }
+
+    };
